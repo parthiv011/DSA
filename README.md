@@ -9,3 +9,7 @@ Data Structures and Algorithms
     2. Recursion and Backtracking
     3. Sorting
     4. Searching
+    5. Binary Search Problems
+    6. Linked Lists
+    7. Queue
+    8. Stacks
