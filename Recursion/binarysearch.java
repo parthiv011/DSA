@@ -7,14 +7,15 @@ class binarysearch {
         s = 0;
         e = arr.length;
         int mid = s + (e - s) / 2;
-        if (arr[mid] == key) {
-            return mid;
-        }
-        while (arr[mid] < key) {
-            search(arr, 0, mid - 1, key);
-        }
-        while (arr[mid] > key) {
-            search(arr, mid + 1, e, key);
+        if (s <= e) {
+            if (key == arr[mid])
+                return mid;
+
+            if (key > arr[mid])
+                return search(arr, mid + 1, e, key);
+
+            else
+                return search(arr, s, mid - 1, key);
         }
         return -1;
     }

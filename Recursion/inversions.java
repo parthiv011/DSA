@@ -26,7 +26,7 @@ public class inversions {
             arr[mainArrayIndex++] = first[i++];
         }
         while (j < second.length) {
-            arr[mainArrayIndex++] = arr[j++];
+            arr[mainArrayIndex++] = second[j++];
         }
         return swapCnt;
     }
