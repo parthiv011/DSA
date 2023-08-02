@@ -1,5 +1,8 @@
-public class linkedlists {
-    private static class Node {
+class linkedlists {
+    private static Node head;
+    private static Node tail;
+
+    private class Node {
         int data;
         Node next;
 
@@ -9,63 +12,95 @@ public class linkedlists {
         }
     }
 
-    private static Node insertAtHead(Node head, int data) {
+    // insert at start
+    public void insertAtHead(int data) {
+        if (tail == null) {
+            tail = head;
+        }
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
-        return head;
     }
 
-    private static Node insertAtTail(Node tail, int data) {
-        Node temp = new Node(data);
-        tail.next = temp;
-        tail = tail.next;
-        return tail;
-    }
-
-    private static Node insertAtMiddle(Node head, Node tail, int position, int data) {
-        if (position == 1) {
-            return insertAtHead(head, data);
+    // insert at tail
+    private void insertAtTail(int data) {
+        if (tail == null) {
+            insertAtHead(data);
+            return;
         }
+        Node newNode = new Node(data);
+        tail.next = newNode;
+        tail = newNode;
+    }
 
-        Node temp = head;
-        int cnt = 1;
+    // insert at given index
+    public void insertAtPosition(int position, int data) {
 
+        // inserting at head
+        if (position == 0) {
+            insertAtHead(data);
+            return;
+        }
+        int cnt = 0;
+        Node newnode = head;
         while (cnt < position - 1) {
-            temp = temp.next;
+            newnode = newnode.next;
             cnt++;
         }
-        Node NodeToInsert = new Node(data);
-        NodeToInsert.next = temp.next;
-        temp.next = NodeToInsert;
-        if (temp == tail) {
-            tail = NodeToInsert;
+
+        // inserting at tail
+        if (newnode.next == null) {
+            insertAtTail(data);
+            return;
         }
-        return head;
+
+        // creating a Node for data
+        Node nodeToInsert = new Node(data);
+        nodeToInsert.next = newnode.next;
+        newnode.next = nodeToInsert;
     }
 
-    private static void print(Node head) {
+    public void deleteNode(int position) {
+        if (position == 0) {
+            head = head.next;
+        } else {
+            Node temp = head;
+            int cnt = 0;
+            while ((temp != null && cnt < position - 1)) {
+                temp = temp.next;
+                cnt++;
+            }
+            if (temp != null && temp.next != null) {
+                temp.next = temp.next.next;
+            }
+        }
+    }
 
+    public void print(Node head) {
         while (head != null) {
             System.out.print(head.data + " -> ");
             head = head.next;
         }
-        System.out.println("NULL");
+        System.out.println("Null");
     }
 
     public static void main(String[] args) {
-        Node n = new Node(4);
-        Node head = n;
-        Node tail = n;
-        print(head);
+        linkedlists list = new linkedlists();
 
-        head = insertAtHead(head, 10);
-        print(head);
+        // insertions
+        list.insertAtHead(3);
+        list.insertAtHead(2);
+        list.insertAtHead(1);
+        list.insertAtTail(4);
+        list.insertAtPosition(4, 3);
+        list.print(head);
+        System.out.println(head.data);
+        System.out.println(tail.data);
 
-        tail = insertAtTail(tail, 0);
-        print(head);
-
-        Node p = insertAtMiddle(head, tail, 1, 3);
-        print(head);
+        // deletions
+        list.deleteNode(0);
+        list.print(head);
+        System.out.println(head.data);
+        System.out.println(tail.data);
     }
 }
