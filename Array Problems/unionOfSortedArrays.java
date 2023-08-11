@@ -1,34 +1,49 @@
-public class unionOfSortedArrays {
-    private static int[] merge(int arr1[], int arr2[]) {
-        int ans[] = new int[arr1.length + arr2.length];
-        int i = 0, j = 0, k = 0;
+import java.util.ArrayList;
+import java.util.List;
 
-        while (i < arr1.length && j < arr2.length) {
-            if (arr1[i] < arr2[j]) {
-                ans[k++] = arr1[i++];
+public class unionOfSortedArrays {
+    public static List<Integer> sortedArray(int[] a, int[] b) {
+        List<Integer> unionArr = new ArrayList<>();
+
+        int n1 = a.length;
+        int n2 = b.length;
+
+        int i = 0;
+        int j = 0;
+
+        while (i < n1 && j < n2) {
+            if (a[i] <= b[j]) {
+                if (!unionArr.contains(a[i])) {
+                    unionArr.add(a[i]);
+                }
+                i++;
             } else {
-                ans[k++] = arr2[j++];
+                if (!unionArr.contains(b[j])) {
+                    unionArr.add(b[j]);
+                }
+                j++;
             }
         }
-        while (i < arr1.length) {
-            if (arr1[i] < arr2[j]) {
-                ans[k++] = arr1[i++];
+        while (i < n1) {
+            if (!unionArr.contains(a[i])) {
+                unionArr.add(a[i]);
             }
+            i++;
         }
-        while (j < arr2.length) {
-            if (arr2[j] < arr1[i])
-                ans[k++] = arr2[j++];
+        while (j < n2) {
+            if (!unionArr.contains(b[j])) {
+                unionArr.add(b[j]);
+            }
+            j++;
         }
-        return ans;
+        return unionArr;
     }
 
     public static void main(String[] args) {
         int arr1[] = new int[] { 1, 2, 3, 4 };
         int arr2[] = new int[] { 2, 4, 5, 6, 7, 8 };
-        int ans[] = merge(arr1, arr2);
-        for (int i : ans) {
-            System.out.print(ans[i] + " ");
-        }
-        System.out.println();
+        List<Integer> ans = sortedArray(arr1, arr2);
+        System.out.println(ans);
+
     }
 }
