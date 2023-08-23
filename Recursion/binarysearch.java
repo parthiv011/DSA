@@ -1,7 +1,6 @@
 //the condition for performing binary search is that is should have sorted array
 
 //this is binary search implementation using recursion
-
 class binarysearch {
     public static int search(int arr[], int s, int e, int key) {
         s = 0;
