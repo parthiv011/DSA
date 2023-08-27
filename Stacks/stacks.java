@@ -54,7 +54,6 @@ public class stacks {
 
     public static void main(String[] args) {
 
-        // Implementing stack using Collections
         stack s = new stack(4);
         s.push(2);
         s.push(13);
@@ -69,7 +68,7 @@ public class stacks {
         System.out.println(s.peek());
 
         s.isEmpty();
-
+        // Implementing stack using Collections
         // Stack<Integer> test = new Stack<>();
         // System.out.println(test.push(2));
         // System.out.println(test.push(3));
