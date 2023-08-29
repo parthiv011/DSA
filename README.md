@@ -13,3 +13,5 @@ Data Structures and Algorithms
     6. Linked Lists
     7. Queue
     8. Stacks
+    9. Trees
+    10. Graphs
