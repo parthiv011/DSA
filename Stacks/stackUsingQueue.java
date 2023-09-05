@@ -36,15 +36,15 @@ public class stackUsingQueue {
     }
 
     public static void main(String[] args) {
-        stackUsingQueue s = new stackUsingQueue();
-        s.push(7);
-        s.push(21);
-        s.push(11);
-        s.display();
-        System.out.println("current size : " + s.size());
-        s.pop();
-        s.display();
-        System.out.println("Peek element : " + s.top());
-        System.out.println("current size : " + s.size());
+        stackUsingQueue stack = new stackUsingQueue();
+        stack.push(7);
+        stack.push(21);
+        stack.push(11);
+        stack.display();
+        System.out.println("current size : " + stack.size());
+        stack.pop();
+        stack.display();
+        System.out.println("Peek element : " + stack.top());
+        System.out.println("current size : " + stack.size());
     }
 }
