@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ProductExceptSelf {
     private static int[] product(int nums[], int n) {
         int left[] = new int[n];
